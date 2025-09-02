@@ -186,13 +186,13 @@ function sendMainMenu(chatId) {
             keyboard: [
                 ['💰 Balance', '👥 Refer'],
                 ['💸 Withdraw', '📞 Contact'],
-                ['🎁 Bonus']
+                ['🎁 Bonus', '💎 Earn More']
             ],
             resize_keyboard: true,
             one_time_keyboard: false
         }
     };
-    bot.sendMessage(chatId, 'Welcome to the main menu.', opts);
+    bot.sendMessage(chatId, '🎉 Welcome to the main menu! Choose an option below:', opts);
 }
 
 bot.onText(/💰 Balance/, async (msg) => {
@@ -302,6 +302,20 @@ bot.onText(/📞 Contact/, (msg) => {
     const chatId = msg.chat.id;
     const adminUsername = 'botcryptoadmin1';
     bot.sendMessage(chatId, `For any queries, you can contact the admin here: @${adminUsername}`);
+});
+
+bot.onText(/💎 Earn More/, (msg) => {
+    const chatId = msg.chat.id;
+    bot.sendMessage(chatId, 'Visit this amazing earning platform! 🚀', {
+        reply_markup: {
+            inline_keyboard: [[
+                {
+                    text: '💎 Start Earning Now',
+                    url: 'https://cryptoquestpro.netlify.app/'
+                }
+            ]]
+        }
+    });
 });
 
 bot.onText(/🎁 Bonus/, async (msg) => {
